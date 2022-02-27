@@ -20,7 +20,7 @@ jobs:
          run: dotnet dotnet restore .\security.api\security.api.csproj 
 
        - name: Build app 
-         run: dotnet build .\security.api\security.api.csproj  -c Release --no-restore
+         run: dotnet build .\security.api\security.api.sln  -c Release --no-restore
 
 
 
