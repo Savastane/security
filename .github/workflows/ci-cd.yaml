@@ -25,7 +25,7 @@ jobs:
          run: dotnet dotnet restore ./security.api/security.api.csproj 
 
        - name: Build app 
-         run: ./security.api/dotnet build security.api.sln  --configuration Release --no-restore
+         run: dotnet build ./security.api/security.api.sln  --configuration Release --no-restore
 
 
 
