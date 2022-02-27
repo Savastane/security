@@ -13,7 +13,7 @@ jobs:
 
       #  - name: Configuracao .Net 6
       #    uses: actions/checkout@v2
-      #    with:
+      #    with: ./security.test/security.test.sln
       #      dotnet-version: '6.0.x'
 
        - name: Setup .NET 6.0  
@@ -27,5 +27,7 @@ jobs:
        - name: Build app 
          run: dotnet build ./security.api/security.api.sln  --configuration Release 
 
+       - name: Build automated teste
+         run: dotnet test   --configuration --no--build 
 
 
