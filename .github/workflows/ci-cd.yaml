@@ -22,10 +22,10 @@ jobs:
            dotnet-version: 6.0.x           
 
        - name: Restore dependencies 
-         run: dotnet dotnet restore .\security.api\security.api.csproj 
+         run: dotnet dotnet restore ./security.api/security.api.csproj 
 
        - name: Build app 
-         run: dotnet build .\security.api\security.api.sln  --configuration Release --no-restore
+         run: dotnet build ./security.api/security.api.sln  --configuration Release --no-restore
 
 
 
