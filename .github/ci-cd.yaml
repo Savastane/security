@@ -1,0 +1,26 @@
+name:  Integraçao Continua e Deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Check out Code
+         uses: actions/checkout@v2
+
+       - name: Configuracao .Net 6
+         uses: actions/checkout@v2
+         with:
+           dotnet-version: '5.0.x'
+
+       - name: Restore dependeces 
+          run: dotnet restore
+
+       - name: Build app 
+          run: dotnet build -c Release --no-restore
+
+
+
