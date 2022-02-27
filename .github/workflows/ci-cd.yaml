@@ -11,15 +11,15 @@ jobs:
        - name: Check out Code
          uses: actions/checkout@v2
 
-      #  - name: Configuracao .Net 6
-      #    uses: actions/checkout@v2
-      #    with:
-      #      dotnet-version: '6.0.x'
-
-       - name: Setup .NET 6.0
-         uses: actions/setup-dotnet@v1
+       - name: Configuracao .Net 6
+         uses: actions/checkout@v2
          with:
-           dotnet-version: 6.0.x           
+           dotnet-version: '6.0.x'
+
+      #  - name: Setup .NET 6.0
+      #    uses: actions/setup-dotnet@v1
+      #    with:
+      #      dotnet-version: 6.0.x           
 
        - name: Restore dependencies 
          run: dotnet dotnet restore ./security.api/security.api.csproj 
