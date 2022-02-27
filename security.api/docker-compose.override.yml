@@ -1,0 +1,40 @@
+version: '3.4'
+
+services:
+
+  security.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "46666:80"
+      - "46667:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  ravendb.dados:    
+    image: ravendb/ravendb
+    ports:
+      - 40000:8080
+      - 38888:38888
+    #extra_hosts:
+    #  - "hostos:localhost"
+    
+      
+    volumes:
+      -  /your/home:/var/lib/ravendb      
+      -  f:/raven/data:/opt/RavenDB/Server/RavenData
+      
+      
+      
+    environment:
+      - RAVEN_Security_UnsecuredAccessAllowed=PrivateNetwork
+      - "RAVEN_ARGS='--config-path f:/raven/config/settings.json'"      
+      - RAVEN_Setup_Mode=None
+      - RAVEN_License_Eula_Accepted=true
+      - "RAVEN_ServerUrl=http://0.0.0.0:8080"
+      - "RAVEN_PublicServerUrl=http://localhost:40000"
+      - "RAVEN_ServerUrl_Tcp=tcp://0.0.0.0:38888"
+      - "RAVEN_PublicServerUrl_Tcp=tcp://localhost:38888"
+    #env_file: ./license.env

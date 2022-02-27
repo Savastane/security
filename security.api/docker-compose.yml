@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  security.api:
+    image: ${DOCKER_REGISTRY-}securityapi
+    build:
+      context: .
+      dockerfile: Dockerfile
