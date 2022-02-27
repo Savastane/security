@@ -1,3 +1,7 @@
+[![Integraçao Continua e Deploy](https://github.com/Savastane/security/actions/workflows/ci-cd.yaml/badge.svg)](https://github.com/Savastane/security/actions/workflows/ci-cd.yaml)
+
+
+
 # security
 
 
