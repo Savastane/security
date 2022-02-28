@@ -10,23 +10,22 @@ namespace security.domain
     public class Usuario :  Notifiable<Notification>
     {
         [DataMember]
-        public string Id { get; set; }
+        public string? Id { get; set; }
         [DataMember]
         public EmailValue Email { get; set; }
         [DataMember]
-        public string Nome { get; set; }
+        public string? Nome { get; set; }
         [DataMember]
         public string Password { get; set; }
         [DataMember]
-        public List<string> Roles { get; set; }
+        public List<string>? Roles { get; set; }
 
         public Usuario(string nome, string email, string password, List<string> roles)
         {
             this.Id = email;
             this.Nome = nome;
             this.Email = new EmailValue(email);
-            this.Password = password;
-            
+            this.Password = password;            
             this.Roles = roles ?? new List<string>();
 
 
@@ -36,8 +35,10 @@ namespace security.domain
         public Usuario(string email, string password)
         {
             this.Id = email;
+            this.Nome = "";
             this.Email = new EmailValue(email);
             this.Password = password;
+            this.Roles = new List<string>();
 
             AddNotifications(this.Email.Notifications);
 
