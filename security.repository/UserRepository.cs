@@ -38,10 +38,7 @@ namespace security.repository
         public Task<Usuario> Add(Usuario entidade)
         {
 
-            if (DataBaseName!= session.Advanced.DocumentStore.Database)
-            {
-                session = session.Advanced.DocumentStore.OpenAsyncSession(DataBaseName);
-            }
+      
             
 
                 session.StoreAsync(entidade);
@@ -87,17 +84,14 @@ namespace security.repository
 
         public void SetDatabase(string databasename)
         {
-            //try (IDocumentStore store = new DocumentStore(new String[] { "http://localhost:8080" }, session.Advanced.DocumentStore.Database)) {
-            //    store.initialize();
-
-                
-            //}
-            //session.Advanced.DocumentStore.Database
-
-            //this.session = dbSession;
-            //this.session.Advanced.SetTransactionMode(TransactionMode.ClusterWide);
-
             this.DataBaseName = databasename;
+
+            if (DataBaseName != session.Advanced.DocumentStore.Database)
+            {
+                session = session.Advanced.DocumentStore.OpenAsyncSession(databasename);
+            }
+
+            
 
             
         }

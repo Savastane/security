@@ -17,5 +17,10 @@ namespace security.application
             this.Action = "filldatabase";
         }
 
+        public string GetBanco()
+        { 
+           return this.Audiencia ?? "security";  
+        }
+
     }
 }

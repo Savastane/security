@@ -15,7 +15,7 @@ using Xunit;
         {
             
             
-            var resultado = MockAutentircarRepository.AddUserRepository();
+            var resultado = MockAutentircarRepository.GetUserRepository();
 
             var handler = new AddUserHandler(resultado.Object);
 
@@ -32,9 +32,78 @@ using Xunit;
             Assert.True(userResult.Roles[0].Equals("admin"));
 
         }
-       
 
 
+        [Fact]
+        public void GetUserOKTest()
+        {
+
+
+            var resultado = MockAutentircarRepository.GetUserRepository();
+
+            var handler = new AddUserHandler(resultado.Object);
+
+            var roles = new List<string>();
+            roles.Add("admin");
+
+            var requestModel = new AddUserRequest("sava", "sava@organizer.one", "12345", roles);
+
+            var userResult = handler.Handle(requestModel, CancellationToken.None).Result;
+
+            Assert.True(userResult.Email == userResult.Id);
+            Assert.True(requestModel.Email == userResult.Id);
+            Assert.True(requestModel.Roles[0] == userResult.Roles[0]);
+            Assert.True(userResult.Roles[0].Equals("admin"));
+
+        }
+
+
+        [Fact]
+        public void UpdateUserOKTest()
+        {
+
+
+            var resultado = MockAutentircarRepository.GetUserRepository();
+
+            var handler = new AddUserHandler(resultado.Object);
+
+            var roles = new List<string>();
+            roles.Add("admin");
+
+            var requestModel = new AddUserRequest("sava", "sava@organizer.one", "12345", roles);
+
+            var userResult = handler.Handle(requestModel, CancellationToken.None).Result;
+
+            Assert.True(userResult.Email == userResult.Id);
+            Assert.True(requestModel.Email == userResult.Id);
+            Assert.True(requestModel.Roles[0] == userResult.Roles[0]);
+            Assert.True(userResult.Roles[0].Equals("admin"));
+
+        }
+
+
+        [Fact]
+        public void RemoveUserOKTest()
+        {
+
+
+            var resultado = MockAutentircarRepository.GetUserRepository();
+
+            var handler = new AddUserHandler(resultado.Object);
+
+            var roles = new List<string>();
+            roles.Add("admin");
+
+            var requestModel = new AddUserRequest("sava", "sava@organizer.one", "12345", roles);
+
+            var userResult = handler.Handle(requestModel, CancellationToken.None).Result;
+
+            Assert.True(userResult.Email == userResult.Id);
+            Assert.True(requestModel.Email == userResult.Id);
+            Assert.True(requestModel.Roles[0] == userResult.Roles[0]);
+            Assert.True(userResult.Roles[0].Equals("admin"));
+
+        }
     }
 }
 

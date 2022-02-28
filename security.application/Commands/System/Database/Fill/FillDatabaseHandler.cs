@@ -17,7 +17,7 @@ namespace security.application
 
         public async Task<FillDatabaseResponse> Handle(FillDatabaseRequest request, CancellationToken cancellationToken)
         {
-            Repository.SetDatabase(request.Audiencia);
+            Repository.SetDatabase(request.GetBanco());
             
             var usuarios = Usuario.GetMoq();
             var lista = new List<UsuarioResponse>();

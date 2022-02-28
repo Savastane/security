@@ -30,11 +30,11 @@ builder.Services.AddAuthentication(x=> {
         //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
 
         //ValidateIssuer = true,
-        ValidAudiences = new List<string>
-        {
-            "AUDIENCE1",
-            "AUDIENCE2"
-        },
+        //ValidAudiences = new List<string>
+        //{
+        //    "AUDIENCE1",
+        //    "AUDIENCE2"
+        //},
 
 
         IssuerSigningKey = new SymmetricSecurityKey(Settings.getKey())

@@ -38,7 +38,7 @@ namespace security.test.Application
 
         }
 
-        public static Mock<IUsuarioRepository> AddUserRepository()
+        public static Mock<IUsuarioRepository> GetUserRepository()
         {
 
             var listaMoq = Usuario.GetMoq();
@@ -61,5 +61,7 @@ namespace security.test.Application
             return moqResult;
 
         }
+
+        
     }
 }

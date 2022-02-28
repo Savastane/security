@@ -7,7 +7,7 @@ using security.domain;
 using System.Threading;
 using Xunit;
 
-    public class SecurityTest
+    public class LoginTest
     {
 
         [Fact]

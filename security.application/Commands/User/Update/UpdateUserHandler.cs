@@ -17,6 +17,7 @@ namespace security.application
 
         public async Task<UpdateUserResponse> Handle(UpdateUserRequest request, CancellationToken cancellationToken)
         {
+
             UpdateUserResponse resposta ;
 
             Usuario usuario = new Usuario(request.Nome, request.Email, request.Password, request.Roles);
@@ -31,7 +32,7 @@ namespace security.application
             }
 
             rep.SetDatabase(request.Audiencia);
-            var usuarioRetorno =  rep.Add(usuario);            
+            var usuarioRetorno =  rep.Update(usuario);            
             var user = usuarioRetorno.Result;
             
             resposta = new UpdateUserResponse(user.Id, user.Nome, user.Email.Endereco, user.Roles);

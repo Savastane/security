@@ -58,7 +58,7 @@ namespace security.domain
             //    this.Id = Guid.NewGuid().ToString();
             //}
 
-            return this.Id;
+            return this.Id ?? "";
 
             
         }
