@@ -21,8 +21,8 @@ namespace security.application
 
             
 
-            rep.SetDatabase(request.Audiencia);
-            var usuarioRetorno =  rep.Add(usuario);            
+            rep.SetDatabase(request.GetBanco());
+            var usuarioRetorno =  rep.Add(null);            
             var user = usuarioRetorno.Result;
             
             resposta = new GetUserResponse(user.Id, user.Nome, user.Email.Endereco, user.Roles);
