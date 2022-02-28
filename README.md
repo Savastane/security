@@ -1,10 +1,11 @@
 [![Integraçao Continua e Deploy](https://github.com/Savastane/security/actions/workflows/ci-cd.yaml/badge.svg)](https://github.com/Savastane/security/actions/workflows/ci-cd.yaml)
 
 
-# security
+# Security.api
 
 
-Serviço de autentação e gestão de usuários usando banco no sql (ravendb)
+Serviço    de autentação e gestão de usuários,  usando banco nosql (ravendb)
+(minimal.api C#)
 
 
 Rodar Database no docker 

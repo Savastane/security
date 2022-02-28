@@ -1,8 +1,11 @@
-name:  Integraçao Continua e Deploy
+name:  Serviço de Segurança - Integraçao Continua e Deploy
 on:
   push:
     branches:
-      - main
+      - main 
+    paths-ignore:
+      - '**.md'
+
 
 jobs:
   build:
