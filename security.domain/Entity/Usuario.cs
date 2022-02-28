@@ -34,7 +34,8 @@ namespace security.domain
         }
 
         public Usuario(string email, string password)
-        {   
+        {
+            this.Id = email;
             this.Email = new EmailValue(email);
             this.Password = password;
 
@@ -51,12 +52,14 @@ namespace security.domain
 
         public string GetId()
         {
-            if (String.IsNullOrEmpty(this.Id))
-            {
-                this.Id = Guid.NewGuid().ToString();
-            }
+            //if (String.IsNullOrEmpty(this.Id))
+            //{
+            //    this.Id = Guid.NewGuid().ToString();
+            //}
 
             return this.Id;
+
+            
         }
 
         public static List<Usuario> GetMoq()
