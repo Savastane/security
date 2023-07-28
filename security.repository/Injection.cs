@@ -7,12 +7,7 @@
 namespace security.injection
 {
     
-    using MediatR;
-    using System.Reflection;
-    
     using Microsoft.Extensions.DependencyInjection;
-
-
     using security.domain;
     using security.repository;
 

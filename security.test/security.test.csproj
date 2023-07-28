@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\security.application\security.application.csproj" />
+    <ProjectReference Include="..\security.api\security.api.csproj" />
     <ProjectReference Include="..\security.domain\security.domain.csproj" />
   </ItemGroup>
 

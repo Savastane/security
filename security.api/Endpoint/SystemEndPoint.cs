@@ -2,15 +2,11 @@
 {
         
     
-    using security.injection;
-    using security.jwt.token;
-    using security.application;
-    using security.jwt.settings;
+    using security.injection;        
 
+    using security.api.Application;
 
-    using System.Reflection;
-
-    public  class SystemController : IModule
+    public  class SystemEndPoint : IModule
     {
         public  IServiceCollection RegisterModule( IServiceCollection services)
         {   

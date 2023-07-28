@@ -1,10 +1,7 @@
-﻿
-
-
-namespace security.application
+﻿namespace security.api.Application
 {
     using MediatR;
-    using System.ComponentModel.DataAnnotations;
+    
 
     public class AuthenticateUserRequest : IRequest<AuthenticateUserResponse>
     {
@@ -13,13 +10,13 @@ namespace security.application
 
         [Required]
         public string? Password { get; set; }
-        
+
 
         public AuthenticateUserRequest(string email, string password)
         {
-            this.Email = email;
-            this.Password = password;
-        
+            Email = email;
+            Password = password;
+
         }
 
     }

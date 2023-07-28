@@ -9,6 +9,7 @@ namespace security.application
     public class AuthenticateUserHandler : IRequestHandler<AuthenticateUserRequest, AuthenticateUserResponse>
     {
         private readonly IUsuarioRepository Repository;
+        
 
         public AuthenticateUserHandler(IUsuarioRepository repository)
         {
@@ -37,7 +38,7 @@ namespace security.application
                 resposta = new AuthenticateUserResponse(UserFound.Nome , UserFound.Email.Endereco, "gerar token", UserFound.Roles, UserFound.GetPasswordInvalid(request.Password));
 
             }
-
+            
 
             return Task.FromResult(resposta);
 

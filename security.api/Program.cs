@@ -1,61 +1,77 @@
 
+
 using security.jwt.settings;
+using System.Net.NetworkInformation;
+using System.Reflection;
 
 
 
 #region Módulos
 var builder = WebApplication.CreateBuilder(args);
+{ 
 
-builder.RegisterModules();
+    builder.RegisterModules();
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+    var services = builder.Services;
 
-builder.Services.AddAuthentication(x=> {
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    services.AddEndpointsApiExplorer();
+    services.AddSwaggerGen();
 
-}).AddJwtBearer(opt => {
+    services.AddAuthentication(x=> {
+        x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
-    opt.RequireHttpsMetadata = false;
-    opt.SaveToken = true;
-    opt.TokenValidationParameters = new()
-    {        
-        ValidateIssuer = false,
-        ValidateAudience = false,
-        //ValidateLifetime = false,
-        ValidateIssuerSigningKey = true,
-        //   ValidIssuer = Settings.Issuer,
-        //ValidAudience = builder.Configuration["Jwt:Issuer"],
-        //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    }).AddJwtBearer(opt => {
 
-        //ValidateIssuer = true,
-        //ValidAudiences = new List<string>
-        //{
-        //    "AUDIENCE1",
-        //    "AUDIENCE2"
-        //},
+        opt.RequireHttpsMetadata = false;
+        opt.SaveToken = true;
+        opt.TokenValidationParameters = new()
+        {        
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            //ValidateLifetime = false,
+            ValidateIssuerSigningKey = true,
+            //   ValidIssuer = Settings.Issuer,
+            //ValidAudience = builder.Configuration["Jwt:Issuer"],
+            //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+
+            //ValidateIssuer = true,
+            //ValidAudiences = new List<string>
+            //{
+            //    "AUDIENCE1",
+            //    "AUDIENCE2"
+            //},
 
 
-        IssuerSigningKey = new SymmetricSecurityKey(Settings.getKey())
+            IssuerSigningKey = new SymmetricSecurityKey(Settings.getKey())
 
-    };
+        };
 
-});
+        
 
-builder.Services.AddAuthorization(opt => {
-
-    opt.AddPolicy("Super", policy => {
-        policy.RequireRole("admin");
-        policy.RequireRole("professor");
-        policy.RequireRole("aluno");
     });
-    opt.AddPolicy("Admin", policy => policy.RequireRole("admin"));
-    opt.AddPolicy("Professor", policy => policy.RequireRole("professor"));
-    opt.AddPolicy("Aluno", policy => policy.RequireRole("professor"));
 
-});
+    services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Ping).Assembly));
 
+
+
+   // services.AddMediatR(typeof(AuthenticateUserRequest).GetTypeInfo().Assembly);
+   // services.AddMediatR(typeof(AddUserRequest).GetTypeInfo().Assembly);
+
+    services.AddAuthorization(opt => {
+
+        opt.AddPolicy("Super", policy => {
+            policy.RequireRole("admin");
+            policy.RequireRole("professor");
+            policy.RequireRole("aluno");
+        });
+        opt.AddPolicy("Admin", policy => policy.RequireRole("admin"));
+        opt.AddPolicy("Professor", policy => policy.RequireRole("professor"));
+        opt.AddPolicy("Aluno", policy => policy.RequireRole("professor"));
+
+    });
+
+}
 #endregion
 
 

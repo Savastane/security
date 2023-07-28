@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\security.application\security.application.csproj" />
     <ProjectReference Include="..\security.domain\security.domain.csproj" />
     <ProjectReference Include="..\security.repository\security.repository.csproj" />
   </ItemGroup>

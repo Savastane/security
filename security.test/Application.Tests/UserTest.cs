@@ -1,12 +1,11 @@
 ﻿
 namespace security.test.Application
 {
-
-using security.application;
-using security.domain;
+    using security.api.Application;
+    
     using System.Collections.Generic;
     using System.Threading;
-using Xunit;
+    using Xunit;
 
     public class UserTest
     {
