@@ -67,9 +67,9 @@ namespace security.repository
         }
                
 
-        public Task<Usuario> Authenticate(Usuario usuario)
+        public async Task<Usuario> Authenticate(Usuario usuario)
         {            
-            return GetByEmail(usuario.Email.Endereco);
+            return await GetByEmail(usuario.Email.Endereco);
         }
 
 

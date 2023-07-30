@@ -1,7 +1,7 @@
 ﻿
 
 
-namespace security.domain
+namespace security.Interface
 {
     using security.domain;
     public interface IUsuarioRepository

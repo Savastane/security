@@ -1,5 +1,6 @@
 
 
+using security.api.Application;
 using security.jwt.settings;
 using System.Net.NetworkInformation;
 using System.Reflection;
@@ -51,12 +52,13 @@ var builder = WebApplication.CreateBuilder(args);
 
     });
 
-    services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Ping).Assembly));
+    services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(AuthenticateUserRequest).Assembly));
+    
 
 
 
-   // services.AddMediatR(typeof(AuthenticateUserRequest).GetTypeInfo().Assembly);
-   // services.AddMediatR(typeof(AddUserRequest).GetTypeInfo().Assembly);
+    //services.AddMediatR(typeof(AuthenticateUserRequest).GetTypeInfo().Assembly);
+    //services.AddMediatR(typeof(AddUserRequest).GetTypeInfo().Assembly);
 
     services.AddAuthorization(opt => {
 

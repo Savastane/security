@@ -19,7 +19,7 @@
             TokenService = tokenService;
         }
 
-        public Task<AuthenticateUserResponse> Handle(AuthenticateUserRequest request, CancellationToken cancellationToken)
+        public async Task<AuthenticateUserResponse> Handle(AuthenticateUserRequest request, CancellationToken cancellationToken)
         {
 
             AuthenticateUserResponse resposta;
@@ -28,7 +28,7 @@
             Usuario user = new Usuario(request.Email, request.Password);
 
 
-            var UserFound = Repository.Authenticate(user).Result;
+            var UserFound = await Repository.Authenticate(user);
 
 
 
@@ -45,7 +45,7 @@
 
             TokenService.Generate(resposta);
 
-            return Task.FromResult(resposta);
+            return resposta;
 
         }
     }
